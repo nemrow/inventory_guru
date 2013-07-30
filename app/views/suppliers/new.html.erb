@@ -1,0 +1,11 @@
+<%= form_for @supplier do |f| %>
+	<div class="supplier-add-product-shell">
+		<%= f.text_field 'name', :placeholder => 'Supplier Name', :class => 'edit-supplier-name-text-input' %>
+	</div>
+		
+	<%= f.submit 'Add Products', :class => 'edit-supplier-save-btn' %>
+<% end %>
+<div class="order-delivery-sets-container">
+	<%= render partial: 'supplier_order_days/order_days', :locals => {:order_days => @order_days} %>
+</div>
+<p class="get-new-order-set-partial">New Order Delivery Set</p>

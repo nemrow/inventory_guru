@@ -1,0 +1,16 @@
+<%= render partial: 'inventory/inventory_sub_header' %>
+<div class="list-view-1">
+	<%= form_tag(supplier_inventory_index_path(@supplier)) do %>
+		<% @products.each do |product| %>
+			<div class="indi-list-item">
+				<p><%= product.product_name %>
+					<% todays_inventory = Inventory.find_by_product_id_and_date(product.id, Time.now.beginning_of_day) %>
+					<span>
+						<%= text_field_tag 'product_id_' + product.id.to_s, (todays_inventory.quantity if todays_inventory) %>
+					</span>
+				</p>
+			</div>
+		<% end %>
+		<%= submit_tag 'Update Inventory' %>
+	<% end %>
+</div>

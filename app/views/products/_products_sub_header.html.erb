@@ -1,0 +1,16 @@
+<div class="date-display-section">
+	<p><%= @supplier.name %></p>
+</div>
+<div class="supplier-products-nav-container">
+	<div class="supplier-products-nav">
+		<%= link_to edit_supplier_path(@supplier) do %>
+			<p class="left <%= 'supplier-nav-active' if url_matches('edit') %>">General</p>
+		<% end %>
+		<%= link_to supplier_products_path(@supplier) do %>
+			<p class="right <%= 'supplier-nav-active' if url_matches('product') %>">Products</p>
+		<% end %>
+	</div>
+</div>
+
+
+<!----------- LEFT OFF HERE. FORM_FOR PRODUCT NOT WORKING -->

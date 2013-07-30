@@ -1,0 +1,10 @@
+<div id="options-panel">
+	<div class="options-panel-container">
+		<%= button_to "Home", root_path, :method => :get, :class => "btn btn-long btn-theme-1 options-panel-btns" %>
+		<%= button_to "Suppliers", suppliers_path, :method => :get, :class => "btn btn-long btn-theme-1 options-panel-btns" %>
+		<% if current_company && current_company.suppliers.count > 0 %>
+			<%= button_to "Take Inventory", supplier_inventory_index_path(current_company.suppliers.first), :method => :get, :class => "btn btn-long btn-theme-1 options-panel-btns" %>
+		<% end %>
+		<%= button_to "Signout", signout_path, :method => :get, :class => "btn btn-long btn-theme-1 options-panel-btns" %>
+	</div>
+</div>

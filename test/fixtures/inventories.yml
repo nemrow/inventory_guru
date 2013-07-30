@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  procuct_name: MyString
+  supplier_id: 1
+
+two:
+  procuct_name: MyString
+  supplier_id: 1

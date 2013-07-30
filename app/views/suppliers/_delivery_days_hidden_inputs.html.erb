@@ -1,0 +1,20 @@
+<%= fields_for @supplier_delivery_day do |sdd| %>
+	<%= sdd.hidden_field 'sunday', :class => 'delivery-sunday' %>
+	<%= sdd.hidden_field 'monday', :class => 'delivery-monday' %>
+	<%= sdd.hidden_field 'tuesday', :class => 'delivery-tuesday' %>
+	<%= sdd.hidden_field 'wednesday', :class => 'delivery-wednesday' %>
+	<%= sdd.hidden_field 'thursday', :class => 'delivery-thursday' %>
+	<%= sdd.hidden_field 'friday', :class => 'delivery-friday' %>
+	<%= sdd.hidden_field 'saturday', :class => 'delivery-saturday' %>
+<% end %>
+
+<p class="day_selector_header">Delivery Days</p>
+<ul class="day_selector" data-model='delivery'>
+	<li data-day='sunday' data-status='false'>S</li>
+	<li data-day='monday' data-status='false'>M</li>
+	<li data-day='tuesday' data-status='false'>T</li>
+	<li data-day='wednesday' data-status='false'>W</li>
+	<li data-day='thursday' data-status='false'>T</li>
+	<li data-day='friday' data-status='false'>F</li>
+	<li data-day='saturday' data-status='false'>S</li>
+</ul>

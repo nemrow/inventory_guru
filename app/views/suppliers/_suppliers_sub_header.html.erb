@@ -1,0 +1,10 @@
+<div class="date-display-section">
+	<% if url_matches('new') %>
+		<p>New Supplier</p>
+	<% else %>
+		<p>Suppliers</p>
+		<%= link_to new_supplier_path do %>
+			<p class='supplier-add-btn'>+</p>
+		<% end %>
+	<% end %>
+</div>

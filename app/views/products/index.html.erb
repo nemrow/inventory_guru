@@ -1,0 +1,15 @@
+<%= render partial: 'products/products_sub_header' %>
+<div class="supplier-add-product-shell">
+	<%= form_tag(supplier_products_path(@supplier)) do%>
+		<%= text_field_tag 'product[name]', nil, :placeholder => 'product name', :class => 'add-new-product-text-input' %>
+		<%= submit_tag '+', :class => 'add-new-product-submit-btn' %>
+	<% end %>
+</div>
+<div class="list-view-1">
+	<% @products.each do |product| %>
+		<div class="indi-list-item">
+			<p class="products-list-view-p"><%= product.name %></p>
+			<div class="list-view-check-mark-rights icon icon-circle-checked"></div>
+		</div>
+	<% end %>
+</div>

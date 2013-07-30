@@ -1,0 +1,16 @@
+<h1>Order</h1>
+<div class="list-view-1">
+	<%= form_tag(supplier_orders_path(@supplier)) do %>
+		<% @products.each do |product| %>
+			<div class="indi-list-item">
+				<p><%= product.name %>
+					<% todays_order = Order.find_by_product_id_and_date(product.id, Time.now.beginning_of_day) %>
+					<span>
+						<%= text_field_tag 'product_id_' + product.id.to_s, (todays_order.quantity if todays_order) %>
+					</span>
+				</p>
+			</div>
+		<% end %>
+<%= submit_tag 'Place Orders' %>
+	<% end %>
+</div>

@@ -1,0 +1,6 @@
+<header>
+	<h1><%= current_company ? current_company.name : 'Meat App' %></h1>
+	<% if current_user %>
+		<a href="javascript;" class="btn icon float-r pos-ab options-btn"><div class="icon icon-btn icon-gear"></div></a>
+	<% end %>
+</header>

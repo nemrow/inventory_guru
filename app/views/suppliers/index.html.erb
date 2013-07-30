@@ -1,0 +1,11 @@
+<%= render partial: 'suppliers/suppliers_sub_header' %>
+<div class="list-view-1">
+	<% @suppliers.each do |supplier| %>
+		<%= link_to supplier_products_path(supplier) do %>
+			<div class="indi-list-item">
+				<p><%= supplier.name %></p>
+				<div class="icon icon-right-arrow supplier-index-arrow"></div>
+			</div>
+		<% end %>
+	<% end %>
+</div>

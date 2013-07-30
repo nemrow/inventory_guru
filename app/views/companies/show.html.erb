@@ -1,0 +1,33 @@
+<%= render partial: 'companies/companies_sub_header' %>
+
+<% if current_company.suppliers.count > 0 %>
+	<div class="indi-page-header">
+		<%= button_to 'Take Inventory', supplier_inventory_index_path(current_company.suppliers.first), :method => :get, :class => 'btn btn-long btn-theme-1' %>
+	</div>
+<% end %>
+
+<div class="indi-section-header">
+	<p>ORDERS</p>
+</div>
+<div class="list-view-1">
+	<% @suppliers_orders.each do |supplier| %>
+		<%=link_to supplier_orders_path(supplier) do %>
+			<div class="indi-list-item">
+				<p><%= supplier.name %></p>
+				<div class="icon icon-right-arrow supplier-index-arrow"></div>
+			</div>
+		<% end %>
+	<% end %>
+</div>
+
+<div class="indi-section-header">
+	<p>DELIVERIES</p>
+</div>
+<div class="list-view-1">
+	<% @suppliers_deliveries.each do |supplier| %>
+		<div class="indi-list-item">
+			<p><%= supplier.name %></p>
+			<div class="icon icon-right-arrow supplier-index-arrow"></div>
+		</div>
+	<% end %>
+</div>

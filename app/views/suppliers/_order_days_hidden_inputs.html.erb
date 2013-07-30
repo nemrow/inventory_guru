@@ -1,0 +1,20 @@
+<%= fields_for @order_days do |order_day| %>
+	<%= order_day.hidden_field 'sunday', :class => 'order-sunday' %>
+	<%= order_day.hidden_field 'monday', :class => 'order-monday' %>
+	<%= order_day.hidden_field 'tuesday', :class => 'order-tuesday' %>
+	<%= order_day.hidden_field 'wednesday', :class => 'order-wednesday' %>
+	<%= order_day.hidden_field 'thursday', :class => 'order-thursday' %>
+	<%= order_day.hidden_field 'friday', :class => 'order-friday' %>
+	<%= order_day.hidden_field 'saturday', :class => 'order-saturday' %>
+<% end %>
+
+<p class="day_selector_header">Order Days</p>
+<ul class="day_selector" data-model='order'>
+	<li data-day='sunday' data-status='false'>S</li>
+	<li data-day='monday' data-status='false'>M</li>
+	<li data-day='tuesday' data-status='false'>T</li>
+	<li data-day='wednesday' data-status='false'>W</li>
+	<li data-day='thursday' data-status='false'>T</li>
+	<li data-day='friday' data-status='false'>F</li>
+	<li data-day='saturday' data-status='false'>S</li>
+</ul>
