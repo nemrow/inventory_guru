@@ -1,0 +1,6 @@
+<h1>Deliveries<h1>
+<h2><%= @supplier.name %><h2>
+<% @orders.each do |order| %>
+	<p><%= order.product.name %></p>
+	<p><%= order.quantity %></p><br>
+<% end %>

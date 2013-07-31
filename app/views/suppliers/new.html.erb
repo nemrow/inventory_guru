@@ -3,9 +3,20 @@
 		<%= f.text_field 'name', :placeholder => 'Supplier Name', :class => 'edit-supplier-name-text-input' %>
 	</div>
 		
-	<%= f.submit 'Add Products', :class => 'edit-supplier-save-btn' %>
-<% end %>
 <div class="order-delivery-sets-container">
-	<%= render partial: 'supplier_order_days/order_days', :locals => {:order_days => @order_days} %>
+	<%= render partial: 'order_days/order_days', :locals => {:order_day => @order_day} %>
 </div>
 <p class="get-new-order-set-partial">New Order Delivery Set</p>
+	<%= f.submit 'Add Products', :class => 'edit-supplier-save-btn' %>
+<% end %>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.get-new-order-set-partial').click(function(e){
+			e.preventDefault();
+			$.post('/order_days', function(data){
+				$('.order-delivery-sets-container').append(data);
+			});
+		});
+	});
+</script>

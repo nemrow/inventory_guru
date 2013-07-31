@@ -11,6 +11,7 @@ class OrdersController < ApplicationController
 			order.update_attributes(:quantity => params["product_id_#{product.id}"])
 			supplier.orders << order
 		end
+		p Time.now.beginning_of_day
 		redirect_to supplier_orders_path(params[:supplier_id])
 	end
 end

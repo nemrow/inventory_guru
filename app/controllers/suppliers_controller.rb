@@ -11,6 +11,7 @@ class SuppliersController < ApplicationController
 	def new
 		@supplier = Supplier.new
 		@order_day = OrderDay.create
+		@supplier.order_days << @order_day
 	end
 
 	def show
@@ -19,11 +20,10 @@ class SuppliersController < ApplicationController
 
 	def create
 		supplier = Supplier.create(params[:supplier])
-		delivery_days = SupplierDeliveryDay.create(params[:supplier_delivery_day])
-		order_days = SupplierOrderDay.create(params[:supplier_order_day])
 		current_company.suppliers << supplier
-		supplier.supplier_delivery_day = delivery_days
-		supplier.supplier_order_day = order_days
+		supplier.order_days.each do |order_day|
+			order_day.update_attributes(params["order_day_id_#{order_day.id.to_s}"])
+		end
 		redirect_to supplier_products_path(supplier)
 	end
 
@@ -35,8 +35,8 @@ class SuppliersController < ApplicationController
 	def update
 		supplier = Supplier.find(params[:id])
 		supplier.update_attributes(params[:supplier])
-		supplier.supplier_order_days.each do |order_day|
-			order_day.update_attributes(params[order_day.to_s+order_day.id.to_s])
+		supplier.order_days.each do |order_day|
+			order_day.update_attributes(params["order_day_id_#{order_day.id.to_s}"])
 		end
 		redirect_to suppliers_path
 	end

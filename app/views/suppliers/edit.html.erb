@@ -4,29 +4,33 @@
 	<div class="supplier-add-product-shell">
 		<%= f.text_field 'name', :placeholder => 'Supplier Name', :class => 'edit-supplier-name-text-input' %>
 	</div>
-	<% @supplier.order_days.each do |order_day| %>
-	 <%= render partial: 'supplier_order_days/order_days', :locals => {:order_days => order_day} %>
-	<% end %>
+	<div class="order-delivery-sets-container">
+		<% @supplier.order_days.each do |order_day| %>
+		 <%= render partial: 'order_days/order_days', :locals => {:order_day => order_day} %>
+		<% end %>
+	</div>
+	<p class="get-new-order-set-partial">New Order Delivery Set</p>
 	<%= f.submit 'Save Changes', :class => 'edit-supplier-save-btn' %>
 <% end %>
 
-<table class="order-and-deliver-table">
-	<tr class="week-order-days">
-		<td class="day-counter-defi" data-active='false' data-day="sunday">S</td>
-		<td class="day-counter-defi" data-active='false' data-day="monday">M</td>
-		<td class="day-counter-defi" data-active='false' data-day="tuesday">T</td>
-		<td class="day-counter-defi" data-active='false' data-day="wednesday">W</td>
-		<td class="day-counter-defi" data-active='false' data-day="thursday">T</td>
-		<td class="day-counter-defi" data-active='false' data-day="friday">F</td>
-		<td class="day-counter-defi" data-active='false' data-day="saturday">S</td>
-	</tr>
-	<tr>
-		<td class="day-counter-defi">S</td>
-		<td class="day-counter-defi">M</td>
-		<td class="day-counter-defi">T</td>
-		<td class="day-counter-defi">W</td>
-		<td class="day-counter-defi">T</td>
-		<td class="day-counter-defi">F</td>
-		<td class="day-counter-defi">S</td>
-	</tr>	
-</table>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.get-new-order-set-partial').click(function(e){
+			e.preventDefault();
+			$.post('/suppliers/<%= @supplier.id %>/order_days', function(data){
+				$('.order-delivery-sets-container').append(data);
+			});
+		});
+
+		$(document).on('click', '.delete_order_day', function(e){
+			var that = this
+			var id = $(this).data('id');
+			$.ajax({
+			  url: "/suppliers/<%= @supplier.id %>/order_days/"+id+"/",
+			  type: 'DELETE'
+			}).done(function() {
+			  $(that).parent().remove();
+			});
+		});
+	});
+</script>

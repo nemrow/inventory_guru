@@ -1,0 +1,6 @@
+<div>
+	<%= text_field_tag "order_day_id_#{order_day.id.to_s}[order_day]", order_day.order_day %>
+	<%= text_field_tag "order_day_id_#{order_day.id.to_s}[delivery_duration]", order_day.delivery_duration %>
+	<p class="delete_order_day" data-id="<%= order_day.id %>">X</p>
+	<br>
+</div>

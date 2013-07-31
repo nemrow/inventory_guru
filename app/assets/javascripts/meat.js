@@ -58,12 +58,6 @@ var DOMInteration = {
 		// testing!!!
 		var order1 = new Order
 
-		$('.get-new-order-set-partial').click(function(e){
-			$.post('/supplier_order_days', function(data){
-				$('.order-delivery-sets-container').append(data)
-			})
-		});
-
 		DOMInteration.setDaySelectorToggles();
 	},
 

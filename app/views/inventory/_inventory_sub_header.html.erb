@@ -2,12 +2,12 @@
 	<p>Inventory: <%= Time.now.strftime('%B %d, %Y') %></p>
 </div>
 <div class="indi-page-header">
-	<p class="supplier-dropdown-title">Harris Meat</p>
+	<p class="supplier-dropdown-title"><%= @all_suppliers.first.name %></p>
 	<div class="supplier-dropdown-button icon"></div>
 	<div class="inventory-drop-down-sub-header-container">
 		<% @all_suppliers.each do |supplier| %>
 			<%= link_to supplier_inventory_index_path(supplier) do %>
-				<p class="supplier-dropdown-selection"><%= supplier.supplier_name %></p>
+				<p class="supplier-dropdown-selection"><%= supplier.name %></p>
 			<% end %>
 		<% end %>
 	</div>

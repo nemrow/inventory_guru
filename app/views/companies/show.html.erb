@@ -25,9 +25,11 @@
 </div>
 <div class="list-view-1">
 	<% @suppliers_deliveries.each do |supplier| %>
-		<div class="indi-list-item">
-			<p><%= supplier.name %></p>
-			<div class="icon icon-right-arrow supplier-index-arrow"></div>
-		</div>
+		<%=link_to supplier_deliveries_path(supplier) do %>
+			<div class="indi-list-item">
+				<p><%= supplier.name %></p>
+				<div class="icon icon-right-arrow supplier-index-arrow"></div>
+			</div>
+		<% end %>
 	<% end %>
 </div>

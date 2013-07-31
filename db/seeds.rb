@@ -28,3 +28,6 @@ supplier3.products << product3
 
 order_day3 = OrderDay.create(:order_day => 'friday', :delivery_duration => 4)
 supplier3.order_days << order_day3
+
+order_day4 = OrderDay.create(:order_day => 'monday', :delivery_duration => 1)
+supplier3.order_days << order_day4

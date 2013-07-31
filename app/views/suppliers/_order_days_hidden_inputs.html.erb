@@ -1,11 +1,11 @@
-<%= fields_for @order_days do |order_day| %>
-	<%= order_day.hidden_field 'sunday', :class => 'order-sunday' %>
-	<%= order_day.hidden_field 'monday', :class => 'order-monday' %>
-	<%= order_day.hidden_field 'tuesday', :class => 'order-tuesday' %>
-	<%= order_day.hidden_field 'wednesday', :class => 'order-wednesday' %>
-	<%= order_day.hidden_field 'thursday', :class => 'order-thursday' %>
-	<%= order_day.hidden_field 'friday', :class => 'order-friday' %>
-	<%= order_day.hidden_field 'saturday', :class => 'order-saturday' %>
+<%= fields_for @supplier_order_day do |sod| %>
+	<%= sod.hidden_field 'sunday', :class => 'order-sunday' %>
+	<%= sod.hidden_field 'monday', :class => 'order-monday' %>
+	<%= sod.hidden_field 'tuesday', :class => 'order-tuesday' %>
+	<%= sod.hidden_field 'wednesday', :class => 'order-wednesday' %>
+	<%= sod.hidden_field 'thursday', :class => 'order-thursday' %>
+	<%= sod.hidden_field 'friday', :class => 'order-friday' %>
+	<%= sod.hidden_field 'saturday', :class => 'order-saturday' %>
 <% end %>
 
 <p class="day_selector_header">Order Days</p>

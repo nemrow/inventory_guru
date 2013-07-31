@@ -23,8 +23,6 @@ class Company < ActiveRecord::Base
         order = day_to_num(order_day.order_day)
         duration = order_day.delivery_duration
         delivery = num_to_day((order + duration) % 7)
-        p '~~~~~~~~~~'
-        p delivery
         result = true if delivery == "#{Time.now.strftime('%A').downcase}"
       end
       result
