@@ -19,7 +19,7 @@ module ApplicationHelper
 			when 'wednesday' then 4
 			when 'thursday' then 5
 			when 'friday' then 6
-			when 'saturday' then 7
+			when 'saturday' then 0
 		end
 	end
 
@@ -31,7 +31,21 @@ module ApplicationHelper
 			when 4 then 'wednesday'
 			when 5 then 'thursday'
 			when 6 then 'friday'
-			when 7 then 'saturday'
+			when 0 then 'saturday'
 		end
+	end
+
+	def date_format(date)
+		if date.class == Time
+			return date.strftime("%Y-%m-%d")
+		elsif date.class == String
+			return Time.parse(date).strftime("%Y-%m-%d")
+		elsif date.class == Date
+			return date.to_time.strftime("%Y-%m-%d")
+		end
+	end
+
+	def simple_date(date)
+		date.strftime("%m/%d")
 	end
 end

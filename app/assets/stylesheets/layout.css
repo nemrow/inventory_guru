@@ -140,6 +140,7 @@ p, h1{
 	top: 100%;
 	left: 0px;
 	display: none;
+	overflow: auto;
 }
 .indi-section-header{
 	width: 100%;
@@ -361,4 +362,7 @@ ul.day_selector li.day_active{
 }
 .being-delivered-active{
 	background-color: #333 !important;
+}
+.past-order-stats-row{
+	display: none;
 }

@@ -8,7 +8,7 @@ class InventoryController < ApplicationController
 	def create
 		supplier = Supplier.find(params[:supplier_id])
 		supplier.products.each do |product|
-			inventory = Inventory.find_or_create_by_date_and_product_id(Time.now.beginning_of_day, product.id)
+			inventory = Inventory.find_or_create_by_date_and_product_id(date_format(Time.now), product.id)
 			inventory.update_attributes(:quantity => params["product_id_#{product.id}"])
 			supplier.inventories << inventory
 		end

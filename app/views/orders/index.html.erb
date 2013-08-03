@@ -1,16 +1,28 @@
-<h1>Order</h1>
-<div class="list-view-1">
-	<%= form_tag(supplier_orders_path(@supplier)) do %>
+<h1>Order: <%= @supplier.name %></h1>
+<%= form_tag(supplier_orders_path(@supplier)) do %>
+	<table class="order-table">
+	<tr>
+		<th>Item</th><th>Invent</th><th>Coming</th><th>Order</th>
+	</tr>
 		<% @products.each do |product| %>
-			<div class="indi-list-item">
-				<p><%= product.name %>
-					<% todays_order = Order.find_by_product_id_and_date(product.id, Time.now.beginning_of_day) %>
-					<span>
-						<%= text_field_tag 'product_id_' + product.id.to_s, (todays_order.quantity if todays_order) %>
-					</span>
-				</p>
-			</div>
+			<% todays_order = Order.find_by_product_id_and_date(product.id, Time.now.beginning_of_day) %>
+			<% todays_inventory = Inventory.find_by_product_id_and_date(product.id, Time.now.beginning_of_day) %>
+				<tr class="current-day-order-row" data-product-id="<%= product.id %>">
+					<td><%= product.name %></td>
+					<td><%= todays_inventory ? todays_inventory.quantity : "NA" %></td>
+					<td><%= Order.get_in_transit_quantity(product, Time.now) %></td>
+					<td><%= text_field_tag 'product_id_' + product.id.to_s, (todays_order.quantity if todays_order) %></td>
+				</tr>
+				<% [7,14,21].each do |day| %>
+				<% date = Time.now - day.days %>
+				<tr class="past-order-stats-row past-order-stats-row-<%= product.id %>">
+					<td><%= simple_date(date) %></td>
+					<td><%= Inventory.find_by_product_id_and_date(product.id, date).quantity %></td>
+					<td><%= Order.get_in_transit_quantity(product, date) %></td>
+					<td><%= Order.find_by_product_id_and_date(product.id, date).quantity %></td>
+				</tr>
+				<% end %>	
 		<% end %>
-<%= submit_tag 'Place Orders' %>
-	<% end %>
-</div>
+	</table>
+	<%= submit_tag 'Place Orders' %>
+<% end %>

@@ -55,6 +55,11 @@ var DOMInteration = {
 			$(this).addClass('toggle-active');
 		});
 
+		$('.current-day-order-row').click(function(){
+			var id = $(this).data('product-id');
+			$('.past-order-stats-row-'+id).slideToggle(0);
+		});
+
 		// testing!!!
 		var order1 = new Order
 

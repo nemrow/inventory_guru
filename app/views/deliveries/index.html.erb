@@ -1,6 +1,12 @@
-<h1>Deliveries<h1>
-<h2><%= @supplier.name %><h2>
-<% @orders.each do |order| %>
-	<p><%= order.product.name %></p>
-	<p><%= order.quantity %></p><br>
-<% end %>
+<h1>Delivery: <%= @supplier.name %></h1>
+<div class="list-view-1">
+	<% @orders.each do |order| %>
+		<div class="indi-list-item">
+			<p><%= order.product.name %>
+				<span>
+					<%= order.quantity %>
+				</span>
+			</p>
+		</div>
+	<% end %>
+</div>

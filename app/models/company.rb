@@ -20,7 +20,9 @@ class Company < ActiveRecord::Base
     suppliers.select do |supplier|
       result = false
       supplier.order_days.each do |order_day|
+        p order_day.order_day
         order = day_to_num(order_day.order_day)
+        p order
         duration = order_day.delivery_duration
         delivery = num_to_day((order + duration) % 7)
         result = true if delivery == "#{Time.now.strftime('%A').downcase}"

@@ -1,4 +1,4 @@
-<%= render partial: 'inventory/inventory_sub_header' %>
+<%= render partial: 'inventory/inventory_sub_header', locals: {:supplier => @supplier} %>
 <div class="list-view-1">
 	<%= form_tag(supplier_inventory_index_path(@supplier)) do %>
 		<% @products.each do |product| %>

@@ -11,12 +11,12 @@ class Supplier < ActiveRecord::Base
   	deliveries = []
   	order_days.each do |order_day|
   		if delivery_day_today?(order_day)
-  			order_date << (Time.now.beginning_of_day - order_day.delivery_duration).to_s
+  			order_date << date_format(Time.now - (order_day.delivery_duration).days)
   		end
   	end
   	order_date.each do |order_date|
   		orders.each do |order|
-  			deliveries << order if order.date.strftime("%Y-%m-%d") == Time.parse(order_date).strftime("%Y-%m-%d")
+  			deliveries << order if date_format(order.date) == date_format(order_date)
   		end
   	end
   	deliveries

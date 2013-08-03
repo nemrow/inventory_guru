@@ -38,11 +38,12 @@ ActiveRecord::Schema.define(:version => 20130714012056) do
 
   create_table "orders", :force => true do |t|
     t.date     "date"
+    t.date     "delivery_date"
     t.integer  "quantity"
     t.integer  "product_id"
     t.integer  "supplier_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "products", :force => true do |t|
